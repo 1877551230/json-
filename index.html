@@ -1,0 +1,66 @@
+<html>
+    <head>
+     <meta charset='utf-8'>
+      <script>
+      /*直接创建对象*/
+    function testObject(){
+	var personObj=new Object();
+	
+	//添加属性
+	personObj.name="zhangsan";
+	personObj.age=30;
+	
+	//添加方法
+    personObj.say=function(){
+		alert("hello");
+	}
+	
+	//使用新添加的方法和属性
+	personObj.say();
+	alert(personObj.name+"   "+personObj.age);
+
+   }
+   function Person(n,a,ad){
+		//定义name和age属性
+		this.name=n;
+		this.age=a;
+		this.address=ad;
+		
+		//定义方法showInfo
+		this.showInfo=function(){
+			alert(this.name+"   "+this.age);
+		};
+		//定义方法showAddreds
+		this.showAddress=introAddress;
+	}
+	function introAddress(){
+		alert(this.address);
+	}
+	
+    //是由构造函数创建的对象
+	function testObject1(){
+		var p=new  Person("zhangsan",30,"beijing");
+		alert(p.age);
+		p.showInfo();
+		p.showAddress();
+		
+		var p=new  Person("lisi",20,"shanghai");
+		alert(p.age);
+		p.showInfo();
+		p.showAddress();
+    }
+    //使用json创建对象
+    function testObject2(){
+        var jsonObj={"name":"张三","age":30,"address":"北京"};
+	    alert(jsonObj.name);
+	    alert(jsonObj.age);
+	    alert(jsonObj.address);
+    }
+    </script>
+    </head>
+    <body>
+        <div onclick="testObject();">直接创建对象</div>
+        <div onclick="testObject1();">用构造函数创建对象</div>
+        <div onclick="testObject2();">使用json创建对象</div>
+    </body>
+</html>
