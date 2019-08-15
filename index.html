@@ -1,6 +1,90 @@
 <html>
     <head>
      <meta charset='utf-8'>
+	 <script src="json.js" ></script>
+		<script>
+			//访问json简单对象
+			function f1(){
+				var obj={"name":"zhangsan","age":20};
+				alert(obj.name+"   "+obj.age);
+			}
+			//访问json复杂对象
+			function f2(){
+				var obj={
+					"name":"zhangsan",
+					"age":20,
+					"address":{
+						"city":"beijing",
+						"street":"杨庄大街",
+						"building":"首钢实训楼"
+					}
+				};
+				alert(obj.name+"  "+obj.age+"   "+obj.address.building);
+			}
+			//访问简单josn数组
+			function f3(){
+				var arr=[
+					{
+						"name":"zhangsan",
+						"age":20
+					},
+					{
+						"name":"lisi",
+						"age":21
+					}
+				];
+				alert(arr[1].name);
+			}
+			//访问复杂的json数组
+			function f4(){
+				var arr={
+					"name":"zhangsan",
+					"age":20,
+					"friends":[
+						{
+						"name":"wangwu",
+						"age":20
+						},
+						{
+							"name":"zhaoliu",
+							"age":21
+						}
+					]
+				};
+				alert(arr.name+"   "+arr.friends[1].name);
+			}
+			//把json字符串转换成javascript的json对象
+			//eval函数方式转换(不推荐)
+			function f5(){
+				//这个str不是json数据,是一个json的字符串
+				var str='{"name":"zhagnsan","age":20}';
+				var obj=eval("("+str+")");
+				alert(obj.name);			
+			}
+			//javascript原生写法(浏览器版本不能太低)json串-->json对象
+			function f6(){
+				var str='{"name":"zhagnsan","age":20}';
+				var obj=JSON.parse(str);
+				alert(obj.name);
+			}
+			//第三方工具(josn.js)json字符串-->json对象
+			function f7(){
+				var str='{"name":"zhagnsan","age":20}';
+				var obj=str.parseJSON();
+				alert(obj.name);
+			}
+			function f8(){
+				var str='[{"name":"zhangsan","age":20},{"name":"wangwu","age":30}]';
+				var obj=str.parseJSON();
+				alert(obj[1].name);
+			}
+			//json对象-->json字符串
+			function f9(){
+				var obj={"name":"zhangsan","age":20};
+				var str=JSON.stringify(obj);
+				alert(str);
+			}
+		</script>
       <script>
       /*直接创建对象*/
     function testObject(){
@@ -59,6 +143,15 @@
     </script>
     </head>
     <body>
+	<a href="javascript:f1();">访问简单json数据</a><br />
+		<a href="javascript:f2();">访问复杂json数据</a><br />
+		<a href="javascript:f3();">访问简单json数据(数组)</a><br />
+		<a href="javascript:f4();">访问复杂json数据(数组)</a><br />
+		<a href="javascript:f5();">eval函数方式转换(不推荐)</a><br />
+		<a href="javascript:f6();">js原生写法(浏览器版本不能太低)json字符串-->json对象</a><br />
+		<a href="javascript:f7();">第三方工具(josn.js)json字符串-->json对象</a><br />
+		<a href="javascript:f8();">第三方工具(josn.js)json字符串-->json对象</a><br />
+		<a href="javascript:f9();">json对象-->json字符串</a><br />
         <div onclick="testObject();">直接创建对象</div>
         <div onclick="testObject1();">用构造函数创建对象</div>
         <div onclick="testObject2();">使用json创建对象</div>
